@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gold Price Prediction Webapp</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Gold Price Prediction Webapp</h1>
+
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <fieldset>
+                <legend>Enter Input Values</legend>
+
+                <div class="form-group">
+                    <label for="spx">Enter SPX value</label>
+                    <input class="form-control" type="number" name="SPX" id="spx"
+                           placeholder="Enter SPX value" min="700" max="2000" step="any" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="gld">Enter GLD value</label>
+                    <input class="form-control" type="number" name="GLD" id="gld"
+                           placeholder="Enter GLD value" min="10" max="100" step="any" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="uso">Enter USO value</label>
+                    <input class="form-control" type="number" name="USO" id="uso"
+                           placeholder="Enter USO value" min="0" max="100" step="any" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="slv">Enter SLV value</label>
+                    <input class="form-control" type="number" name="SLV" id="slv"
+                           placeholder="Enter SLV value" min="0" max="30" step="any" required />
+                </div>
+
+                <button class="btn btn-primary" type="submit">Predict Gold Price</button>
+            </fieldset>
+        </form>
+
+        {% if results is defined %}
+            <h2 class="mt-4">The predicted gold price is: <strong>{{ results }}</strong></h2>
+        {% endif %}
+    </div>
+</body>
+</html>
